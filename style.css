@@ -1,5 +1,154 @@
+/* approccio MOBILE-FIRST, versione XS */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+
+:root {
+    --nav-width: 5%;
+    --main-header-height: 80px;
+}
+
+main {
+    height: 90vh;
+    border: 1px solid red;
+    overflow: auto;
+    background-color: #151822;
+    display: flex;
+    
+}
+
+main > section {
+    height: 100%;
+    border: 1px solid red;
+    width: calc(100% - var(--nav-width));
+}
+
+main > nav {
+    background-color: black;
+    height: 100%;
+    width: var(--nav-width); /* XS top */
+    padding: 5px 20px;  /* XS top */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;    
+}
+
+.logo-main img:not(.xs) {
+    display: none;
+}
+
+#user-options {
+    text-align: center;
+}
+
+#download * {
+    width: 20px;
+
+}
+
+.user-avatar {
+    background-color: #838183;
+    display: inline-block;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+
+.user-avatar img {
+    height: 80%; /* ??? */
+}
+
+.nav-top {
+    margin-top: 25%;
+}
+
+.nav-bottom {
+    margin-top: auto;
+    text-align: center;
+}
+
+
+
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+
+
+img {
+    width: 30px;
+}
+
+
+
+
+footer {
+    height: 10vh;
+    border: 1px solid red;
+    background-color: #2a2829;
+}
+
+
+nav hr {
+    margin: 10px 0;
+}
+
+button {
+    padding: 1em 2em;
+    cursor: pointer;
+}
+
+#content .header {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 5px;
+    border: 1px solid red;
+}
+
+#content button {
+    text-transform: uppercase;
+    align-self: flex-end;
+}
+
+.curved {
+    border-radius: 20px;
+}
+
+.transparent {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+/* PARTI CHE MANCANO NELLA VERSIONE XS */
+
+#playlist, .desc {
+    display: none;
+}
+
+hr {
+    visibility: hidden;
+}
+
+
+/* MEDIA QUERIES PER ALTRE VIEWPORT */
+
+/* Small devices (landscape phones, 576px and up) */
+    @media (min-width: 576px) {  }
+
+/* Medium devices (tablets, 768px and up) */
+    @media (min-width: 768px) {  }
+
+/* Large devices (desktops, 992px and up) */
+    @media (min-width: 992px) {  }
+
+/* Extra large devices (large desktops, 1200px and up) */
+    @media (min-width: 1200px) {  }
