@@ -6,7 +6,7 @@
      REGOLE GENERALI
 *************************/
 :root {
-    --nav-width: 5%;
+    --nav-width: 50px;
     --main-header-height: 80px;
     --footer-height: 80px;
 }
@@ -55,6 +55,7 @@ main {
     overflow: auto;
     background-color: #151822;
     display: flex;
+    overflow: hidden;
 }
 
 main > section {
@@ -67,21 +68,25 @@ main > nav {
     background-color: black;
     height: 100%;
     width: var(--nav-width);
+    min-width: 50px;
     padding: 5px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    min-width: 50px;
+    min-height: 490px; /* per evitare che nav-bottom salga troppo */
 }
 
 .logo-main img:not(.xs) {
     display: none;
 }
 
-#user-options {
-    text-align: center;
+.logo-main {
+    margin-bottom: 25%;
+    display: block;
 }
+
+
 
 #download * {
     width: 20px;
@@ -94,21 +99,23 @@ main > nav {
     width: 30px;
     height: 30px;
     text-align: center;
+    overflow: hidden;
 }
 
 .user-avatar img {
-    height: 80%; /* l'immagine è alta 30 x 33 quindi riduciamo l'altezza altrimenti non sta nel container */
+    /* height: 80%; l'immagine è alta 30 x 33 quindi riduciamo l'altezza altrimenti non sta nel container */
 }
 
-.nav-top {
-    margin-top: 25%;
-}
+
 
 .nav-bottom {
     margin-top: auto;
     text-align: center;
 }
 
+.nav-bottom #user-options {
+    text-align: center;
+}
 
 
 
@@ -117,29 +124,74 @@ nav ul li a {
     color: white;
 }
 
-
-
 nav img {
     width: 30px;
 }
-
 
 nav hr {
     margin: 10px 0;
 }
 
 
+#content {
+    position: relative;
+    color: white;
+    overflow: auto;
+}
+
+
 #content .header {
-    display: flex;
-    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: calc(100% - var(--nav-width));
+    height: 80px;
     padding: 20px 5px;
     border: 1px solid red;
+    background-color: rgba(0,0,0, 0.5);
 }
 
 #content button {
+    float: right;
     text-transform: uppercase;
-    align-self: flex-end;
 }
+
+#content .header::after {
+    content:"";
+    clear: both;
+    display: table;
+}
+
+#content .header ~ * {
+    position: relative;
+    top: 80px;
+    font-size: 1rem;
+}
+
+#content nav {
+    text-transform: uppercase;
+    background-color: green;
+    color: grey;
+    position: relative;
+}
+
+#content nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#content nav ul li {
+    margin: 20px 10px;
+}
+
+
+#content section {
+    padding: 20px;
+}
+
 
 
 
@@ -153,6 +205,7 @@ footer {
     align-items: center;
     color: white;
     padding: 10px 10px;
+    overflow: hidden;
 }
 
 footer > div {
@@ -307,11 +360,11 @@ footer > div {
 
 .progress-bar:hover::after, .progress-bar:hover::before {
     display: block;
-    background-color: green;
+    background-color: #adff2f;
 }
 
 footer i:hover{
-    color: green;
+    color: #adff2f;
     cursor: pointer;
 }
 
