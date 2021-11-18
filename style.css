@@ -15,7 +15,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
     font-family: 'Lucida Sans';
+    font-size: 16px;
 }
 
 
@@ -26,6 +30,11 @@ button {
 
 .curved {
     border-radius: 20px;
+    transition: 0.5s;
+}
+
+.curved:hover {
+    transform: scale(1.2);
 }
 
 .transparent {
@@ -115,6 +124,23 @@ nav img {
 }
 
 
+nav hr {
+    margin: 10px 0;
+}
+
+
+#content .header {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 5px;
+    border: 1px solid red;
+}
+
+#content button {
+    text-transform: uppercase;
+    align-self: flex-end;
+}
+
 
 
 footer {
@@ -166,11 +192,19 @@ footer > div {
 
 .album-info {
     width: 60%;
+    font-size: 0.8rem;
 }
 
+.album-info .artist {
+    font-size: 1rem;
+} 
+
+
+
 .album-cover img {
-    object-fit: contain !important;
-    object-position: center !important;
+   width: 100%;
+   max-height: 100%;
+   object-fit: contain;
 }
 
 
@@ -194,17 +228,23 @@ footer > div {
 
 
 .footer-center {
-    width: 30%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: red;
+    max-width: 400px;
+    margin: 0 10px;
 }
 
 .footer-right {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.footer-right i {
+    margin-left: 5%;
 }
 
 .row {
@@ -232,30 +272,17 @@ footer > div {
     flex-direction: row;
     justify-content: space-between;
     align-items: center; 
-}
-
-nav hr {
-    margin: 10px 0;
+    font-size: 0.8rem;
 }
 
 
-#content .header {
-    display: flex;
-    flex-direction: column;
-    padding: 20px 5px;
-    border: 1px solid red;
-}
-
-#content button {
-    text-transform: uppercase;
-    align-self: flex-end;
-}
 
 .progress-bar {
     border-radius: 20px;
     width: 80%;
     background-color: rgba(255,255,255, 0.5);
     height: 7px;
+    margin: 0 5px;
     position: relative;
     cursor: pointer;
 }
