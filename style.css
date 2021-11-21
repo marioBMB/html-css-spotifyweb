@@ -43,6 +43,50 @@ button {
     color: white;
 }
 
+.uc {
+    text-transform: uppercase;
+}
+
+span.h2 {
+    display: inline-block;
+    font-size: 1.2em;
+}
+
+a {
+    color: grey;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+nav a {
+    text-decoration: none;
+    color: #717171;
+    font-size: 0.8rem;
+    line-height: 30px;    
+    height: 30px;
+}
+
+nav a:hover {
+    text-decoration: none;
+}
+
+nav img {
+    vertical-align: middle;
+    width: 25px;
+}
+
+nav hr {
+    margin: 10px 0;
+}
+
+nav img, nav button {
+    margin-right: 5px;
+}
+
 
 
 /*************************
@@ -69,30 +113,65 @@ main > nav {
     height: 100%;
     width: var(--nav-width);
     min-width: 50px;
-    padding: 5px 10px;
+    /* padding: 5px 10px; */
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     min-height: 490px; /* per evitare che nav-bottom salga troppo */
+    color: #717171;
 }
 
-.logo-main img:not(.xs) {
-    display: none;
+main > nav ul {
+    list-style: none;
 }
+
 
 .logo-main {
     margin-bottom: 25%;
     display: block;
 }
 
+.logo-main:hover {
+    opacity: 0.8;
+}
+
+.logo-main img {
+    width: 100%;
+}
 
 
-#download * {
+.nav-mid a#new-playlist {
+    margin-bottom: 20px;
+    display: block;
+    cursor: pointer;
+}
+
+.nav-mid a#new-playlist:hover {
+    color: white;
+}
+
+
+.nav-mid a#new-playlist:hover button {
+    background-color: white;
+}
+
+.nav-bottom {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-bottom #download img {
     width: 20px;
 }
 
-.user-avatar {
+.nav-bottom #user-options *{
+    color: white;
+    font-weight: bolder;
+}
+
+.user-avatar img {
     background-color: #838183;
     display: inline-block;
     border-radius: 50%;
@@ -100,45 +179,22 @@ main > nav {
     height: 30px;
     text-align: center;
     overflow: hidden;
-}
-
-.user-avatar img {
-    /* height: 80%; l'immagine è alta 30 x 33 quindi riduciamo l'altezza altrimenti non sta nel container */
+    margin-right: px;
 }
 
 
-
-.nav-bottom {
-    margin-top: auto;
-    text-align: center;
-}
-
-.nav-bottom #user-options {
-    text-align: center;
-}
-
-
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-}
-
-nav img {
-    width: 30px;
-}
-
-nav hr {
-    margin: 10px 0;
-}
 
 
 #content {
     position: relative;
-    color: white;
-    overflow: auto;
+    background-color: #141922;
+    color: #6a6c72;
+    overflow-y: scroll;
 }
 
+#content :is(h1,h2,h3,h4,h5,h6){
+    color: white;
+}
 
 #content .header {
     position: fixed;
@@ -148,12 +204,15 @@ nav hr {
     height: 80px;
     padding: 20px 5px;
     border: 1px solid red;
-    background-color: rgba(0,0,0, 0.5);
+    background-color: rgba(0,0,0, 0.4);
+    z-index: 10;
 }
 
 #content button {
     float: right;
     text-transform: uppercase;
+    margin-right: 20px;
+    width: 200px;
 }
 
 #content .header::after {
@@ -170,7 +229,6 @@ nav hr {
 
 #content nav {
     text-transform: uppercase;
-    background-color: green;
     color: grey;
     position: relative;
 }
@@ -187,10 +245,110 @@ nav hr {
     margin: 20px 10px;
 }
 
+#content li.active::after {
+    content:"";
+    width: 50%;
+    transform: translateX(50%);
+    border-bottom: 2px solid #adff2f;
+    display: block;
+    text-align: center;
+    position: relative;
+    top: 1px;
+    border-radius: 10px;
+}
+
+#content nav ul li a:hover {
+    color: white;
+}
 
 #content section {
     padding: 20px;
 }
+
+#content section h2 {
+    margin: 20px 0;
+}
+
+#content section p {
+    margin: 20px 0;
+    font-size: 0.8rem;
+}
+
+#content section figcaption * {
+    margin-top: 10px;
+}
+
+
+#content section.carousel .items-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    overflow-x: hidden;
+    background-color: orange;
+}
+
+.carousel-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 49%;
+    padding: 0.5%;
+    cursor: pointer;
+}
+
+.carousel-item figure {
+    position: relative;
+    font-size: 0; /* to clear inline-block margins */
+}
+
+.carousel-item figure::before {
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, 0.4);
+    z-index: 2;
+    display: none;
+}
+
+.carousel-item figure::after {
+    content:'\f144';
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900;
+    font-size: 100px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index:10;
+}
+
+
+.carousel-item:hover figure::after, .carousel-item:hover figure::before   {
+    display: inline-block;
+}
+
+.carousel-item figure, .carousel-item figure img {
+    width: 100%;
+}
+
+.carousel-item figcaption {
+    min-height: 50px;
+    text-align: center;
+}
+
+
+#content section#most_popular .carousel-item figure img, section#most_popular .carousel-item figure:hover::before {
+    border-radius: 50%; 
+}
+
 
 
 
@@ -198,7 +356,7 @@ nav hr {
 footer {
     height: var(--footer-height);
     border: 1px solid red;
-    background-color: #2a2829;
+    background-color: #313131;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -206,26 +364,31 @@ footer {
     color: white;
     padding: 10px 10px;
     overflow: hidden;
+    position: relative;
+    z-index: 999;
+    max-height: 250px;
 }
 
 footer > div {
     height: 100%;
 }
 
+
+.footer-left, .footer-right {
+    width: 250px;
+}
+
+
 .footer-left {
     display: flex;
     justify-content: flex-start;
-    background-color: green;
+    /* background-color: green; */
     align-items: center;
     justify-content: space-between;
 
     /* con lo space between dico semplicemente che gli elementi hanno stesso spazio
     in mezzo e sono attaccati al container, ma per centrare l'elemento centrale devo 
     dare una width uguale ai laterali */
-}
-
-.footer-left, .footer-right {
-    width: 250px;
 }
 
 .album {
@@ -268,6 +431,11 @@ footer > div {
     justify-content: center;
     cursor: pointer;
     width: 20%;
+    color: rgba(255,255,255, 0.7);
+}
+
+.album-actions i:hover {
+    opacity: 1;
 }
 
 .album-actions > * {
@@ -279,19 +447,9 @@ footer > div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: red;
+    /* background-color: red; */
     max-width: 400px;
     margin: 0 10px;
-}
-
-.footer-right {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.footer-right i {
-    margin-left: 5%;
 }
 
 .row {
@@ -304,6 +462,10 @@ footer > div {
     font-size: 170%;
 }
 
+.footer-center i.bigger:hover {
+    font-size: 190%;
+}
+
 .controls {
     cursor: pointer;
     width: 100%;
@@ -312,6 +474,7 @@ footer > div {
     justify-content: space-between;
     align-items: center;
     font-size: 20px;
+    height: 120%;
 }
 
 .timebar {
@@ -320,6 +483,16 @@ footer > div {
     justify-content: space-between;
     align-items: center; 
     font-size: 0.8rem;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-right i {
+    margin-left: 5%;
 }
 
 
@@ -364,7 +537,8 @@ footer > div {
 }
 
 footer i:hover{
-    color: #adff2f;
+    color: #fff;
+    opacity: 0.7;
     cursor: pointer;
 }
 
@@ -372,11 +546,31 @@ footer i:hover{
 
 /* PARTI CHE MANCANO NELLA VERSIONE XS */
 
+.logo-main img:not(.xs) {
+    display: none;
+}
+
 #playlist, .desc {
     display: none;
 }
 
-hr {
+#playlist button {
+    font-size: 20px;
+    display: inline-block;
+    text-align: center;
+    padding: 5px 7px;
+    background-color: #a3a3a3;
+    border: none;
+}
+
+
+#playlist h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.nav-bottom hr {
     visibility: hidden;
 }
 
@@ -384,13 +578,89 @@ hr {
 /* MEDIA QUERIES PER ALTRE VIEWPORT */
 
 /* Small devices (landscape phones, 576px and up) */
-    @media (min-width: 576px) {  }
+    @media (min-width: 576px) { 
+        
+        :root{
+            --nav-width: 200px;
+        }
+
+        .xs {
+            display: none;
+        }
+
+        .logo-main img:not(.xs)  {
+            display: block;
+        }
+
+
+        .main-nav {
+            width: var(--nav-width);
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .main-nav > section {
+            padding: 20px;
+        }
+
+        .main-nav li.active a {
+            color: white;
+        }
+
+        .main-nav li.active::before {
+           content: "";
+           border-left: 3px solid #adff2f; 
+           position: absolute;
+           left: 0;
+           height: 25px;
+           padding: 5px 0;
+           border-radius: 5px;
+        }
+
+        .main-nav a:hover {
+            color: white;
+        }
+
+        .main-nav .desc {
+            display: inline-block;
+        }
+
+        #content .header {
+            width: calc(100% - var(--nav-width));
+        }
+
+        #playlist {
+            display: block;
+        }
+
+        .nav-bottom hr {
+            visibility: visible;
+            width: 100%;
+        }
+
+        .nav-bottom {
+            text-align: start;
+        }
+     }
 
 /* Medium devices (tablets, 768px and up) */
-    @media (min-width: 768px) {  }
+    @media (min-width: 768px) {
+
+        .carousel-item {
+            width: 25%;
+        }
+    }
 
 /* Large devices (desktops, 992px and up) */
-    @media (min-width: 992px) {  }
+    @media (min-width: 992px) {
+        .carousel-item {
+            width: 16.6%;
+        }
+    }
 
 /* Extra large devices (large desktops, 1200px and up) */
-    @media (min-width: 1200px) {  }
+    @media (min-width: 1200px) {
+        .carousel-item {
+            width: 16.6%;
+        }
+    }
