@@ -484,6 +484,7 @@ footer > div {
 
 #play-wrapper {
     width: 50px; /* per evitare spostamenti degli altri button all'hover (ingrandimento) */
+    text-align: center;
 }
 
 .timebar {
