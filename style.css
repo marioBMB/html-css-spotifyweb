@@ -68,6 +68,7 @@ nav a {
     font-size: 0.8rem;
     line-height: 30px;    
     height: 30px;
+    display: block;
 }
 
 nav a:hover {
@@ -78,6 +79,10 @@ nav img {
     vertical-align: middle;
     width: 25px;
 }
+
+/* nav a:hover img {
+    fill: white;
+} */
 
 nav hr {
     margin: 10px 0;
